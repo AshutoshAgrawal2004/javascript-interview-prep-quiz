@@ -7,6 +7,7 @@ export interface IQuestion {
 }
 
 export interface IOption {
+  letter: string;
   option: string;
   isCorrect: boolean;
 }

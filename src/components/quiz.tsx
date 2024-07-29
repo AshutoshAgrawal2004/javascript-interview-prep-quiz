@@ -1,4 +1,4 @@
-import { IQuestion } from "@/types/question";
+import { IOption, IQuestion } from "@/types/question";
 import { useState } from "react";
 import { Question } from "./question";
 
@@ -7,30 +7,29 @@ interface QuizProps {
 }
 
 export const Quiz: React.FC<QuizProps> = ({ questionSet }) => {
-  console.log(questionSet);
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [userAnsweredCorrectly, setUserAnsweredCorrectly] = useState<
-    boolean | null
-  >(null);
-  const onAnswer = (isCorrect: boolean) => {
-    setUserAnsweredCorrectly(isCorrect);
+  const [userAnswer, setUserAnswer] = useState<IOption | null>(null);
+
+  const onAnswer = (option: IOption) => {
+    if (userAnswer !== null) return;
+    setUserAnswer(option);
   };
 
-  const onNext = () => {
+  const onNextQuestion = () => {
     setQuestionIndex(questionIndex + 1);
-    setUserAnsweredCorrectly(null);
+    setUserAnswer(null);
   };
   return (
-    <div>
+    <div className="flex flex-col gap-8">
       <h1 className="text-3xl text-center">Javascript Quiz</h1>
       <div>
         <Question
           question={questionSet[questionIndex]}
-          userAnsweredCorrectly={userAnsweredCorrectly}
+          userAnswer={userAnswer}
           onAnswer={onAnswer}
+          onNextQuestion={onNextQuestion}
         />
       </div>
-      <button onClick={onNext}>Next Question</button>
     </div>
   );
 };

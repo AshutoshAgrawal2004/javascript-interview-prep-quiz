@@ -16,6 +16,7 @@ const parseQuiz = (input: string) => {
     );
 
     const parsedOptions = optionsMatch.map(([_, letter, text]) => ({
+      letter,
       option: text,
       isCorrect: letter === answerMatch?.[1],
     }));
