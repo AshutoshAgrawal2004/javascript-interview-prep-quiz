@@ -45,6 +45,8 @@ const quizSlice = createSlice({
           newAnswers[key] = { ...state.userAnswers[key] };
         }
       });
+
+      state.userAnswers = { ...newAnswers };
     },
   },
 });
