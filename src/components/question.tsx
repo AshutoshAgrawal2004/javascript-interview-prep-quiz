@@ -3,20 +3,25 @@ import { Option } from "./option";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Button } from "./ui/button";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { nextQuestion } from "@/store/quiz-slice";
 
-interface QuestionProps {
-  question: IQuestion;
-  userAnswer: IOption | null;
-  onAnswer: (option: IOption) => void;
-  onNextQuestion: () => void;
-}
+interface QuestionProps {}
 
-export const Question: React.FC<QuestionProps> = ({
-  question,
-  userAnswer,
-  onAnswer,
-  onNextQuestion,
-}) => {
+export const Question: React.FC<QuestionProps> = ({}) => {
+  const { questions, currentQuestionIndex, userAnswers } = useAppSelector(
+    (state) => state.quiz
+  );
+
+  const dispatch = useAppDispatch();
+
+  const question = questions[currentQuestionIndex];
+  const userAnswer = userAnswers[currentQuestionIndex];
+
+  const onNextQuestion = () => {
+    dispatch(nextQuestion());
+  };
+
   return (
     <div className="flex flex-col gap-8">
       <div className="">
@@ -29,18 +34,13 @@ export const Question: React.FC<QuestionProps> = ({
       </div>
       <div className="flex flex-col gap-6">
         {question.options.map((option) => (
-          <Option
-            key={option.option}
-            option={option}
-            userAnswer={userAnswer}
-            onAnswer={onAnswer}
-          />
+          <Option key={option.option} option={option} />
         ))}
       </div>
       <div className="flex justify-end">
         <Button onClick={onNextQuestion}>Next Question</Button>
       </div>
-      {userAnswer !== null && (
+      {userAnswer && (
         <div>
           <h5 className="text-green-400 mb-4">Explanation</h5>
           <p className="whitespace-pre-line">{question.explanation}</p>
