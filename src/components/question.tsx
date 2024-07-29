@@ -1,10 +1,10 @@
-import { IOption, IQuestion } from "@/types/question";
 import { Option } from "./option";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Button } from "./ui/button";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { nextQuestion } from "@/store/quiz-slice";
+import { useNavigate } from "react-router-dom";
 
 interface QuestionProps {}
 
@@ -15,11 +15,17 @@ export const Question: React.FC<QuestionProps> = ({}) => {
 
   const dispatch = useAppDispatch();
 
+  const navigate = useNavigate();
+
   const question = questions[currentQuestionIndex];
   const userAnswer = userAnswers[currentQuestionIndex];
 
   const onNextQuestion = () => {
-    dispatch(nextQuestion());
+    if (currentQuestionIndex === questions.length - 1) {
+      navigate("/result");
+    } else {
+      dispatch(nextQuestion());
+    }
   };
 
   return (

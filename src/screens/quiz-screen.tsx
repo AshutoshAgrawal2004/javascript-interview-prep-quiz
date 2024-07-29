@@ -1,8 +1,6 @@
-import { Question } from "./question";
+import { Question } from "@/components/question";
 
-interface QuizProps {}
-
-export const Quiz: React.FC<QuizProps> = ({}) => {
+export const QuizScreen = () => {
   return (
     <div className="flex flex-col gap-8">
       <h1 className="text-3xl text-center">Javascript Quiz</h1>

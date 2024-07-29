@@ -10,7 +10,7 @@ export interface QuizState {
 }
 
 const initialState: QuizState = {
-  questions: questionsData,
+  questions: [],
   currentQuestionIndex: 0,
   userAnswers: {},
 };
@@ -19,9 +19,6 @@ const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
-    setQuestions: (state, action: PayloadAction<IQuestion[]>) => {
-      state.questions = action.payload;
-    },
     answerQuestion: (
       state,
       action: PayloadAction<{ index: number; answer: IOption }>
@@ -33,14 +30,14 @@ const quizSlice = createSlice({
         state.currentQuestionIndex += 1;
       }
     },
-    resetQuiz: (state) => {
+    startQuiz: (state, action: PayloadAction<{ questions: IQuestion[] }>) => {
       state.currentQuestionIndex = 0;
       state.userAnswers = {};
+      state.questions = action.payload.questions;
     },
   },
 });
 
-export const { setQuestions, answerQuestion, nextQuestion, resetQuiz } =
-  quizSlice.actions;
+export const { answerQuestion, nextQuestion, startQuiz } = quizSlice.actions;
 
 export default quizSlice.reducer;
