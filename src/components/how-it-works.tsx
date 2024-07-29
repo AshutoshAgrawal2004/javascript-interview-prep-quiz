@@ -2,8 +2,8 @@ import "./how-it-works.css";
 
 export const HowItWorks = () => {
   return (
-    <div className="how-it-works">
-      Here's a quick guide on how to use the app:
+    <div className="how-it-works flex flex-col gap-4">
+      <p>Here's a quick guide on how to use the app:</p>
       <ol>
         <li>
           <strong>Start the Quiz:</strong>
@@ -82,8 +82,10 @@ export const HowItWorks = () => {
           </ul>
         </li>
       </ol>
-      By following these steps, you'll be able to effectively practice
-      JavaScript concepts and improve your skills. Good luck, and have fun!
+      <p>
+        By following these steps, you'll be able to effectively practice
+        JavaScript concepts and improve your skills. Good luck, and have fun!
+      </p>
     </div>
   );
 };

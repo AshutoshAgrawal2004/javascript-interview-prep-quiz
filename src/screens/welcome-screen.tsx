@@ -2,7 +2,6 @@ import { HowItWorks } from "@/components/how-it-works";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { questionsData } from "@/data/questions-data";
-import { cn } from "@/lib/utils";
 import { resetSavedAnswers, startQuiz } from "@/store/quiz-slice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { getRandomQuestions } from "@/utils/get-random-questions";
@@ -45,11 +44,10 @@ export const WelcomeScreen = () => {
         This quiz app is designed to help you practice JavaScript concepts with
         various questions. Good luck and have fun!
       </p>
-      <div className="flex flex-col w-[60%] gap-4 justify-center items-center">
+      <div className="flex flex-col lg:w-[60%] gap-4 justify-center items-center">
         <Slider
           value={[numberOfQuestions]}
           onValueChange={(val) => {
-            console.log(val);
             setNumberOfQuestions(val[0]);
           }}
           defaultValue={[10]}
