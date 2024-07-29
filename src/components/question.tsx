@@ -9,16 +9,15 @@ import { useNavigate } from "react-router-dom";
 interface QuestionProps {}
 
 export const Question: React.FC<QuestionProps> = ({}) => {
-  const { questions, currentQuestionIndex, userAnswers } = useAppSelector(
-    (state) => state.quiz
-  );
+  const { questions, currentQuestionIndex, currentQuestionId, userAnswers } =
+    useAppSelector((state) => state.quiz);
 
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
   const question = questions[currentQuestionIndex];
-  const userAnswer = userAnswers[currentQuestionIndex];
+  const userAnswer = userAnswers[currentQuestionId];
 
   const onNextQuestion = () => {
     if (currentQuestionIndex === questions.length - 1) {
@@ -40,7 +39,7 @@ export const Question: React.FC<QuestionProps> = ({}) => {
       </div>
       <div className="flex flex-col gap-6">
         {question.options.map((option) => (
-          <Option key={option.option} option={option} />
+          <Option key={option.id} option={option} />
         ))}
       </div>
       <div className="flex justify-end">

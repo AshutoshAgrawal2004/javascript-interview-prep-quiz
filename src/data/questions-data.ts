@@ -1,6 +1,6 @@
 import { IQuestion } from "@/types/question";
 import { questionRawData } from "./question-raw-data";
-
+import { v4 as uuid } from "uuid";
 const parseQuiz = (input: string) => {
   const questions = input.split("---").filter((q) => q.trim());
   const quiz: IQuestion[] = questions.map((question, index) => {
@@ -16,6 +16,7 @@ const parseQuiz = (input: string) => {
     );
 
     const parsedOptions = optionsMatch.map(([_, letter, text]) => ({
+      id: uuid(),
       letter,
       option: text,
       isCorrect: letter === answerMatch?.[1],

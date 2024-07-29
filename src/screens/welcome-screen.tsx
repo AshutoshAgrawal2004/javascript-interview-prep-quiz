@@ -1,16 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { questionsData } from "@/data/questions-data";
 import { startQuiz } from "@/store/quiz-slice";
-import { useAppDispatch } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
 import { getRandomQuestions } from "@/utils/get-random-questions";
 import { useNavigate } from "react-router-dom";
 
 export const WelcomeScreen = () => {
   const navigate = useNavigate();
-
+  const userAnswers = useAppSelector((state) => state.quiz.userAnswers);
   const dispatch = useAppDispatch();
   const onStartQuiz = () => {
-    const questionsSet = getRandomQuestions(questionsData, 10);
+    const excludeQuestions: string[] = [];
+
+    Object.keys(userAnswers).forEach((key) => {
+      if (userAnswers[key]?.isCorrect) {
+        excludeQuestions.push(key);
+      }
+    });
+
+    const questionsSet = getRandomQuestions(
+      questionsData,
+      10,
+      excludeQuestions
+    );
     dispatch(startQuiz({ questions: questionsSet }));
     navigate("/quiz");
   };

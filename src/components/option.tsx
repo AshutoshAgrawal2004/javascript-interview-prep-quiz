@@ -9,13 +9,13 @@ interface OptionProps {
 }
 
 export const Option = ({ option }: OptionProps) => {
-  const { currentQuestionIndex, userAnswers } = useAppSelector(
+  const { currentQuestionId, userAnswers } = useAppSelector(
     (state) => state.quiz
   );
 
   const dispatch = useAppDispatch();
 
-  const userAnswer = userAnswers[currentQuestionIndex];
+  const userAnswer = userAnswers[currentQuestionId];
 
   const showInRed =
     userAnswer && userAnswer.letter === option.letter && !option.isCorrect;
@@ -24,7 +24,7 @@ export const Option = ({ option }: OptionProps) => {
   const onAnswer = () => {
     if (userAnswer) return;
     dispatch(
-      answerQuestion({ index: currentQuestionIndex, answer: { ...option } })
+      answerQuestion({ questionId: currentQuestionId, answer: { ...option } })
     );
   };
 
