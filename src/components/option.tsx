@@ -32,10 +32,13 @@ export const Option = ({ option }: OptionProps) => {
     <Button
       variant="outline"
       onClick={onAnswer}
-      className={cn("justify-start gap-4", {
-        "bg-red-800 hover:bg-red-600": showInRed,
-        "bg-green-800 hover:bg-green-600": showInGreen,
-      })}
+      className={cn(
+        "justify-start gap-4 whitespace-pre-line text-justify h-[unset]",
+        {
+          "bg-red-800 hover:bg-red-600": showInRed,
+          "bg-green-800 hover:bg-green-600": showInGreen,
+        }
+      )}
     >
       <div className="rounded-full p-1 bg-slate-900 h-6 w-6 flex items-center justify-center">
         {option.letter}

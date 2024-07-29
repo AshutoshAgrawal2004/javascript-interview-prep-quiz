@@ -2398,8 +2398,8 @@ Therefore, \`firstName\` does not exist as a variable, thus attempting to access
 const { name: myName } = { name: 'Lydia' };
 
 console.log(myName); // "lydia"
-console.log(name); // "" ----- Browser e.g. Chrome
-console.log(name); // ReferenceError: name is not defined  ----- NodeJS
+console.log(name); // "" - Browser e.g. Chrome
+console.log(name); // ReferenceError: name is not defined  - NodeJS
 
 \`\`\`
 

@@ -48,9 +48,13 @@ const quizSlice = createSlice({
 
       state.userAnswers = { ...newAnswers };
     },
+    resetSavedAnswers: (state) => {
+      state.userAnswers = {};
+    },
   },
 });
 
-export const { answerQuestion, nextQuestion, startQuiz } = quizSlice.actions;
+export const { answerQuestion, nextQuestion, startQuiz, resetSavedAnswers } =
+  quizSlice.actions;
 
 export default quizSlice.reducer;

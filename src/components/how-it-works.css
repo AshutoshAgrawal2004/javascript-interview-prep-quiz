@@ -1,0 +1,10 @@
+.how-it-works ol > li {
+  padding-left: 2rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.how-it-works ol > li > ul > li {
+  margin-top: 0.5rem;
+  padding-left: 4rem;
+}

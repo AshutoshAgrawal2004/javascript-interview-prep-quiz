@@ -29,22 +29,25 @@ export const Question: React.FC<QuestionProps> = ({}) => {
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="">
-        <h4 className="text-xl">{question.question}</h4>
-        {question.codeBlock && (
-          <SyntaxHighlighter language={"javascript"} style={dracula}>
-            {question.codeBlock}
-          </SyntaxHighlighter>
-        )}
+      <div className="flex gap-8">
+        <div className="flex-1">
+          <h4 className="text-xl">{question.question}</h4>
+          {question.codeBlock && (
+            <SyntaxHighlighter language={"javascript"} style={dracula}>
+              {question.codeBlock}
+            </SyntaxHighlighter>
+          )}
+        </div>
+        <div className="flex flex-col gap-6 min-w-80 mt-10">
+          {question.options.map((option) => (
+            <Option key={option.id} option={option} />
+          ))}
+          <div className="flex justify-end">
+            <Button onClick={onNextQuestion}>Next Question</Button>
+          </div>
+        </div>
       </div>
-      <div className="flex flex-col gap-6">
-        {question.options.map((option) => (
-          <Option key={option.id} option={option} />
-        ))}
-      </div>
-      <div className="flex justify-end">
-        <Button onClick={onNextQuestion}>Next Question</Button>
-      </div>
+
       {userAnswer && (
         <div>
           <h5 className="text-green-400 mb-4">Explanation</h5>
