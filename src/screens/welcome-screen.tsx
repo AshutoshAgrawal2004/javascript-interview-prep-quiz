@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { HowItWorks } from "@/components/how-it-works";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
@@ -16,13 +17,20 @@ export const WelcomeScreen = () => {
   const [numberOfQuestions, setNumberOfQuestions] = useState(10);
 
   const onStartQuiz = () => {
-    const excludeQuestions: string[] = [];
+    let excludeQuestions: string[] = [];
 
     Object.keys(userAnswers).forEach((key) => {
       if (userAnswers[key]?.isCorrect) {
         excludeQuestions.push(key);
       }
     });
+
+    // If user is requesting more questions that what is available for him
+    // then reset the saved answers
+    if (questionsData.length - excludeQuestions.length < numberOfQuestions) {
+      onResetAnswers();
+      excludeQuestions = [];
+    }
 
     const questionsSet = getRandomQuestions(
       questionsData,
@@ -39,7 +47,6 @@ export const WelcomeScreen = () => {
 
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
-      <h1 className="text-4xl">Welcome to the Javascript Quiz</h1>
       <p className="text-lg">
         This quiz app is designed to help you practice JavaScript concepts with
         various questions. Good luck and have fun!
@@ -66,30 +73,7 @@ export const WelcomeScreen = () => {
       ) : null}
 
       <HowItWorks />
-      <footer className="p-6 text-center">
-        <p className="text-lg mb-4">
-          The questions in this quiz are sourced from{" "}
-          <a
-            href="https://github.com/lydiahallie/javascript-questions"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-blue-500 underline"
-          >
-            Lydia Hallie’s JavaScript Questions
-          </a>
-          . We are grateful for the open-source contributions that made this
-          possible.
-        </p>
-        <p>
-          Made with ❤️ by{" "}
-          <a
-            href="https://github.com/AshutoshAgrawal2004"
-            className="underline"
-          >
-            Ashutosh Agrawal
-          </a>
-        </p>
-      </footer>
+      <Footer />
     </div>
   );
 };

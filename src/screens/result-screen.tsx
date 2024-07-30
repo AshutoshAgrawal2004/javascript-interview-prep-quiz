@@ -23,7 +23,7 @@ export const ResultScreen = () => {
   };
 
   return (
-    <div className="flex flex-col gap-4 justify-center items-center min-h-[calc(100vh-2rem)]">
+    <div className="flex flex-col gap-4 justify-center items-center">
       <h1 className="text-4xl font-semibold">Final Result</h1>
       <p className="text-2xl">
         Your score is {score} out of {questions.length}
