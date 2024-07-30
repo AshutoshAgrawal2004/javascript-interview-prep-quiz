@@ -23,25 +23,22 @@ export const ResultScreen = () => {
   };
 
   return (
-    <div className="flex flex-col gap-8 justify-center items-center">
-      <h1 className="text-4xl">Quiz Result</h1>
+    <div className="flex flex-col gap-4 justify-center items-center min-h-[calc(100vh-2rem)]">
+      <h1 className="text-4xl font-semibold">Final Result</h1>
       <p className="text-2xl">
         Your score is {score} out of {questions.length}
       </p>
-      <div className="grid grid-cols-10 gap-4">
+      <div className="grid grid-cols-5 gap-4 my-6">
         {questions.map((question, i) => {
           const isSkipped = !!!userAnswers[question.id];
           const isCorrect = userAnswers[question.id]?.isCorrect;
           return (
             <div
-              className={cn(
-                "h-8 w-8 flex justify-center items-center rounded-full",
-                {
-                  "bg-green-600": !isSkipped && isCorrect,
-                  "bg-red-600": !isSkipped && !isCorrect,
-                  "bg-yellow-600": isSkipped,
-                }
-              )}
+              className={cn("h-12 w-12 flex justify-center items-center", {
+                "bg-green-600": !isSkipped && isCorrect,
+                "bg-red-600": !isSkipped && !isCorrect,
+                "bg-yellow-600": isSkipped,
+              })}
               key={question.id}
             >
               {i + 1}
@@ -50,9 +47,7 @@ export const ResultScreen = () => {
         })}
       </div>
 
-      <Button className="btn btn-primary" onClick={restartQuiz}>
-        Restart Quiz
-      </Button>
+      <Button onClick={restartQuiz}>Restart Quiz</Button>
     </div>
   );
 };

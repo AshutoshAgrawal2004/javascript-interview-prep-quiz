@@ -26,6 +26,13 @@ const quizSlice = createSlice({
     ) => {
       state.userAnswers[action.payload.questionId] = action.payload.answer;
     },
+    prevQuestion: (state) => {
+      if (state.currentQuestionIndex > 0) {
+        state.currentQuestionIndex -= 1;
+        state.currentQuestionId =
+          state.questions[state.currentQuestionIndex].id;
+      }
+    },
     nextQuestion: (state) => {
       if (state.currentQuestionIndex < state.questions.length - 1) {
         state.currentQuestionIndex += 1;
@@ -54,7 +61,12 @@ const quizSlice = createSlice({
   },
 });
 
-export const { answerQuestion, nextQuestion, startQuiz, resetSavedAnswers } =
-  quizSlice.actions;
+export const {
+  answerQuestion,
+  prevQuestion,
+  nextQuestion,
+  startQuiz,
+  resetSavedAnswers,
+} = quizSlice.actions;
 
 export default quizSlice.reducer;

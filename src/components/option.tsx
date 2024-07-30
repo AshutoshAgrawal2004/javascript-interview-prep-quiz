@@ -33,17 +33,25 @@ export const Option = ({ option }: OptionProps) => {
       variant="outline"
       onClick={onAnswer}
       className={cn(
-        "justify-start gap-4 whitespace-pre-line text-justify h-[unset]",
-        {
-          "bg-red-800 hover:bg-red-600": showInRed,
-          "bg-green-800 hover:bg-green-600": showInGreen,
-        }
+        "justify-start whitespace-pre-line text-justify h-[unset] py-0 px-0"
       )}
     >
-      <div className="rounded-full p-1 bg-slate-900 h-6 w-6 flex items-center justify-center">
+      <div
+        className={cn(
+          "p-[14px] bg-slate-900 text-xl flex items-center justify-center h-full w-12 rounded-tl-[8px] rounded-bl-[8px]"
+        )}
+      >
         {option.letter}
       </div>
-      {option.option}
+      <div
+        className={cn("py-4 flex-1 pl-4 rounded-tr-[8px] rounded-br-[8px]", {
+          "border-2 border-l-0": showInGreen || showInRed,
+          "bg-red-950 border-red-800": showInRed,
+          "bg-green-950 border-green-800": showInGreen,
+        })}
+      >
+        {option.option}
+      </div>
     </Button>
   );
 };
