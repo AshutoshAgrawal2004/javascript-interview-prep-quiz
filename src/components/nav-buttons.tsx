@@ -24,19 +24,22 @@ export const NavButtons = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row justify-between items-center gap-8">
+    <div className="flex justify-between items-center">
       <Button
         variant="secondary"
         onClick={onPrevQuestion}
         disabled={currentQuestionIndex === 0}
+        className="gap-2"
       >
-        <ChevronLeft /> Previous Question
+        <ChevronLeft size="20" />
+        Previous
       </Button>
-      <span className="text-2xl font-semibold">
+      <span className="text-xl font-semibold">
         Question {currentQuestionIndex + 1}
       </span>
-      <Button onClick={onNextQuestion}>
-        Next Question <ChevronRight />
+      <Button onClick={onNextQuestion} className="gap-2">
+        Next
+        <ChevronRight size="20" />
       </Button>
     </div>
   );

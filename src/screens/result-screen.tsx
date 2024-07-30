@@ -1,3 +1,4 @@
+import { Footer } from "@/components/footer";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { useAppSelector } from "@/store/store";
@@ -24,9 +25,9 @@ export const ResultScreen = () => {
 
   return (
     <div className="flex flex-col gap-4 justify-center items-center">
-      <h1 className="text-4xl font-semibold">Final Result</h1>
-      <p className="text-2xl">
-        Your score is {score} out of {questions.length}
+      <h1 className="text-2xl font-semibold">Final Result 🎉</h1>
+      <p>
+        Your score is <strong>{score}</strong> out of {questions.length}
       </p>
       <div className="grid grid-cols-5 gap-4 my-6">
         {questions.map((question, i) => {
@@ -47,7 +48,11 @@ export const ResultScreen = () => {
         })}
       </div>
 
-      <Button onClick={restartQuiz}>Restart Quiz</Button>
+      <Button className="text-base" onClick={restartQuiz}>
+        Restart Quiz
+      </Button>
+
+      <Footer />
     </div>
   );
 };

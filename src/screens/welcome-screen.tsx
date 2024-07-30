@@ -6,6 +6,7 @@ import { questionsData } from "@/data/questions-data";
 import { resetSavedAnswers, startQuiz } from "@/store/quiz-slice";
 import { useAppDispatch, useAppSelector } from "@/store/store";
 import { getRandomQuestions } from "@/utils/get-random-questions";
+import { ArrowRight, RotateCcwIcon } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -47,11 +48,15 @@ export const WelcomeScreen = () => {
 
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
-      <p className="text-lg">
+      <p className="p-4 italic rounded-xl  bg-slate-900">
         This quiz app is designed to help you practice JavaScript concepts with
         various questions. Good luck and have fun!
+        <br />
+        <br />~ Fellow Developer
       </p>
-      <div className="flex flex-col lg:w-[60%] gap-4 justify-center items-center">
+
+      <div className="flex flex-col lg:w-[40%] w-[75%] gap-4 justify-center items-center">
+        <p className="text-sm text-gray-500">Choose number of questions</p>
         <Slider
           value={[numberOfQuestions]}
           onValueChange={(val) => {
@@ -62,13 +67,21 @@ export const WelcomeScreen = () => {
           max={150}
           step={5}
         />
-        <p className="text-lg">Number of questions: {numberOfQuestions}</p>
+
+        <span className="text-2xl font-semibold">{numberOfQuestions}</span>
       </div>
-      <Button onClick={onStartQuiz}>Start Quiz</Button>
+      <Button className="text-base gap-2" onClick={onStartQuiz}>
+        Start Quiz
+        <ArrowRight size="20" />
+      </Button>
 
       {Object.keys(userAnswers).length ? (
-        <Button variant="outline" onClick={onResetAnswers}>
-          Reset Saved Answers
+        <Button
+          variant="link"
+          className="text-gray-500 gap-2"
+          onClick={onResetAnswers}
+        >
+          <RotateCcwIcon size="20" /> Reset Saved Answers
         </Button>
       ) : null}
 

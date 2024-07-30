@@ -12,9 +12,9 @@ function App() {
   }, [location]);
 
   return (
-    <div className="flex flex-col gap-8 w-full h-full min-h-screen pt-8 font-inter">
+    <div className="flex flex-col gap-8 w-full h-full min-h-screen pt-4 font-inter">
       <Header />
-      <div className="container flex-1 max-w-4xl">
+      <div className="container px-4 flex-1 max-w-4xl">
         <Routes>
           <Route path="/" element={<WelcomeScreen />} />
           <Route path="/quiz" element={<QuizScreen />} />
