@@ -11,18 +11,26 @@ export default defineConfig({
       manifest: {
         name: "JavaScript Interview Preparation Quiz",
         short_name: "JS Quiz",
-        description:
-          "A fun quiz to test your JavaScript knowledge and help you prepare for javascript interviews.",
         start_url: "/",
         display: "standalone",
         background_color: "#020817",
+        lang: "en",
+        scope: "/",
+        description:
+          "A fun quiz to test your JavaScript knowledge and help you prepare for javascript interviews.",
         theme_color: "#020817",
         icons: [
           {
             src: "./maskable.png",
             sizes: "512x512",
             type: "image/png",
-            purpose: "any maskable",
+            purpose: "any",
+          },
+          {
+            src: "./maskable.png",
+            sizes: "512x512",
+            type: "image/png",
+            purpose: "maskable",
           },
           {
             src: "./android-chrome-192x192.png",
@@ -35,6 +43,10 @@ export default defineConfig({
             sizes: "512x512",
           },
         ],
+        id: "quiz-app",
+        dir: "ltr",
+        orientation: "any",
+        categories: ["education"],
       },
       includeAssets: [
         "./favicon.ico",
