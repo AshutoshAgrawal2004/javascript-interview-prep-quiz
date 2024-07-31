@@ -3,14 +3,26 @@ import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Options } from "./options";
 import { Explanation } from "./explanation";
 import { NavButtons } from "./nav-buttons";
-import { useAppSelector } from "@/store/store";
+import { useAppDispatch, useAppSelector } from "@/store/store";
+import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { jumpToQuestion } from "@/store/quiz-slice";
 
 interface QuestionProps {}
 
 export const Question: React.FC<QuestionProps> = ({}) => {
+  const params = useParams();
+  const navQuestionIndex = parseInt(params.questionIndex || "-1");
   const { questions, currentQuestionIndex } = useAppSelector(
     (state) => state.quiz
   );
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (navQuestionIndex != currentQuestionIndex) {
+      dispatch(jumpToQuestion(navQuestionIndex));
+    }
+  }, [navQuestionIndex]);
 
   const question = questions[currentQuestionIndex];
 

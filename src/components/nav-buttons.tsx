@@ -1,26 +1,24 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "./ui/button";
-import { useAppDispatch, useAppSelector } from "@/store/store";
+import { useAppSelector } from "@/store/store";
 import { useNavigate } from "react-router-dom";
-import { nextQuestion, prevQuestion } from "@/store/quiz-slice";
 
 export const NavButtons = () => {
   const { questions, currentQuestionIndex } = useAppSelector(
     (state) => state.quiz
   );
-  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
   const onNextQuestion = () => {
     if (currentQuestionIndex === questions.length - 1) {
       navigate("/result");
     } else {
-      dispatch(nextQuestion());
+      navigate(`/quiz/${currentQuestionIndex + 1}`);
     }
   };
 
   const onPrevQuestion = () => {
-    dispatch(prevQuestion());
+    navigate(`/quiz/${currentQuestionIndex - 1}`);
   };
 
   return (

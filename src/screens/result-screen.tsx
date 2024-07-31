@@ -35,12 +35,18 @@ export const ResultScreen = () => {
           const isCorrect = userAnswers[question.id]?.isCorrect;
           return (
             <div
-              className={cn("h-12 w-12 flex justify-center items-center", {
-                "bg-green-600": !isSkipped && isCorrect,
-                "bg-red-600": !isSkipped && !isCorrect,
-                "bg-yellow-600": isSkipped,
-              })}
+              className={cn(
+                "h-12 w-12 flex justify-center items-center cursor-pointer",
+                {
+                  "bg-green-600": !isSkipped && isCorrect,
+                  "bg-red-600": !isSkipped && !isCorrect,
+                  "bg-yellow-600": isSkipped,
+                }
+              )}
               key={question.id}
+              onClick={() => {
+                navigate(`/quiz/${i}`);
+              }}
             >
               {i + 1}
             </div>

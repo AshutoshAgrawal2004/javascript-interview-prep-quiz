@@ -5,7 +5,7 @@ export const GiveUpButton = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  if (location.pathname !== "/quiz") return null;
+  if (!location.pathname.includes("/quiz")) return null;
 
   return (
     <Button variant="destructive" onClick={() => navigate("/result")}>

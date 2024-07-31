@@ -17,7 +17,7 @@ function App() {
       <div className="container px-4 flex-1 max-w-4xl">
         <Routes>
           <Route path="/" element={<WelcomeScreen />} />
-          <Route path="/quiz" element={<QuizScreen />} />
+          <Route path="/quiz/:questionIndex" element={<QuizScreen />} />
           <Route path="/result" element={<ResultScreen />} />
         </Routes>
       </div>

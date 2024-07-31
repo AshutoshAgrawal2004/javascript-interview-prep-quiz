@@ -39,7 +39,7 @@ export const WelcomeScreen = () => {
       excludeQuestions
     );
     dispatch(startQuiz({ questions: questionsSet }));
-    navigate("/quiz");
+    navigate("/quiz/0");
   };
 
   const onResetAnswers = () => {
