@@ -49,10 +49,10 @@ export const WelcomeScreen = () => {
   return (
     <div className="flex flex-col gap-8 justify-center items-center">
       <p className="p-4 italic rounded-xl  bg-slate-900">
-        This quiz app is designed to help you practice JavaScript concepts with
-        various questions. Good luck and have fun!
+        From basic to advanced: test how well you know JavaScript, refresh your
+        knowledge a bit or prepare for your coding interview!
         <br />
-        <br />~ Fellow Developer
+        <br /> <span className="float-right">~ Fellow Developer</span>
       </p>
 
       <div className="flex flex-col lg:w-[40%] w-[75%] gap-4 justify-center items-center">
@@ -68,7 +68,7 @@ export const WelcomeScreen = () => {
           step={5}
         />
 
-        <span className="text-2xl font-semibold">{numberOfQuestions}</span>
+        <span className="text-6xl font-semibold">{numberOfQuestions}</span>
       </div>
       <Button className="text-base gap-2" onClick={onStartQuiz}>
         Start Quiz
@@ -85,6 +85,7 @@ export const WelcomeScreen = () => {
         </Button>
       ) : null}
 
+      <hr className="w-full border-b border-b-secondary" />
       <HowItWorks />
       <Footer />
     </div>

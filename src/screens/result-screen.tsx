@@ -53,6 +53,7 @@ export const ResultScreen = () => {
           );
         })}
       </div>
+      <p className="text-gray-500">Click the question number to revisit</p>
 
       <Button className="text-base" onClick={restartQuiz}>
         Restart Quiz
