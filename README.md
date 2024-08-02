@@ -21,3 +21,6 @@ The questions in this quiz are sourced from [Lydia Hallie’s JavaScript Questio
 ## Authors
 
 Made with ❤️ by [Ashutosh Agrawal](https://www.linkedin.com/in/ashutosh-agrawal-537b70155/) and [Rushikesh Bijapurkar](https://www.linkedin.com/in/atrushikesh/)
+
+## Vote on Product Hunt
+https://www.producthunt.com/posts/javascript-interview-preparation-quiz
