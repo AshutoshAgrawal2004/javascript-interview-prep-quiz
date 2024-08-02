@@ -1,7 +1,9 @@
+import { Button } from "./ui/button";
+
 export const Footer = () => {
   return (
-    <footer className="p-6 text-center">
-      <p className="text-[12px] mb-4 text-gray-500">
+    <footer className="p-6 text-center flex flex-col gap-4">
+      <p className="text-[12px] text-gray-500">
         The questions in this quiz are sourced from{" "}
         <a
           href="https://github.com/lydiahallie/javascript-questions"
@@ -14,6 +16,15 @@ export const Footer = () => {
         . We are grateful for the open-source contributions that made this
         possible.
       </p>
+      <a
+        href="https://www.producthunt.com/posts/javascript-interview-preparation-quiz"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <Button className="text-[#ff6157] border border-[#ff6157] gap-1">
+          <span className="text-black">Upvote on</span> Product Hunt
+        </Button>
+      </a>
       <p className="text-sm">
         Made with ❤️ by{" "}
         <a
