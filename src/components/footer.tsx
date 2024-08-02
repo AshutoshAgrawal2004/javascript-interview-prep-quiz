@@ -1,5 +1,3 @@
-import { Button } from "./ui/button";
-
 export const Footer = () => {
   return (
     <footer className="p-6 text-center flex flex-col gap-4">
@@ -21,9 +19,19 @@ export const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <Button className="text-[#ff6157] border border-[#ff6157] gap-1">
-          <span className="text-black">Upvote on</span> Product Hunt
-        </Button>
+        <a
+          href="https://www.producthunt.com/posts/javascript-interview-preparation-quiz?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-javascript&#0045;interview&#0045;preparation&#0045;quiz"
+          target="_blank"
+        >
+          <img
+            src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=476073&theme=light"
+            alt="Javascript&#0032;Interview&#0032;Preparation&#0032;Quiz - Prepare&#0032;for&#0032;your&#0032;next&#0032;JS&#0032;Interview | Product Hunt"
+            className="mx-auto"
+            style={{ width: "250px", height: "42px" }}
+            width="250"
+            height="54"
+          />
+        </a>
       </a>
       <p className="text-sm">
         Made with ❤️ by{" "}
