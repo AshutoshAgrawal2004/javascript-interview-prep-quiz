@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import JavaScriptLogo from "../assets/cat-js-logo.png";
+import JavaScriptLogo from "../assets/cat-js-logo.webp";
 import { GiveUpButton } from "./give-up-button";
 
 export const Header = () => {
